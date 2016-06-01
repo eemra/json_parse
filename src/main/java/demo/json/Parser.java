@@ -80,7 +80,6 @@ public class Parser {
 				FILE_NAME = file.getAbsolutePath();
 			}
 		}
-		
 
 		parser.prepareOutputFolderStructure();
 		parser.parseAndValidateJSON();
@@ -96,69 +95,31 @@ public class Parser {
 		System.out.println("\tjava -jar jsonParser.jar book_data.json");
 	}
 
-	private void prepareOutputFolderStructure() {
+	private void prepareOutputFolderStructure(File folder) {
+		if (folder.exists()) {
+			if (!folder.delete()) {
+				System.err.println(folder.getAbsolutePath() + " can not be deleted!");
+				System.exit(0);
+			} else {
+				System.out.println(folder.getAbsolutePath() + " is deleted!");
+			}
+		}
+	}
 
-		if (OUTPUT_FOLDER.exists() == false) {
-			if (OUTPUT_FOLDER.mkdir() == false) {
+	private void prepareOutputFolderStructure() {
+		if (!OUTPUT_FOLDER.exists()) {
+			if (!OUTPUT_FOLDER.mkdir()) {
 				System.err.println(OUTPUT_FOLDER.getAbsolutePath() + " can not be created!");
 				System.exit(0);
 			}
 		}
 
-		if (FILE_VALIDATION_ERROR_AUTHOR.exists()) {
-			if (FILE_VALIDATION_ERROR_AUTHOR.delete() == false) {
-				System.err.println(FILE_VALIDATION_ERROR_AUTHOR.getAbsolutePath() + " can not be deleted!");
-				System.exit(0);
-			} else {
-				System.out.println(FILE_VALIDATION_ERROR_AUTHOR.getAbsolutePath() + " is deleted!");
-			}
-		}
-
-		if (FILE_VALIDATION_ERROR_BOOK.exists()) {
-			if (FILE_VALIDATION_ERROR_BOOK.delete() == false) {
-				System.err.println(FILE_VALIDATION_ERROR_BOOK.getAbsolutePath() + " can not be deleted!");
-				System.exit(0);
-			} else {
-				System.out.println(FILE_VALIDATION_ERROR_BOOK.getAbsolutePath() + " is deleted!");
-			}
-		}
-
-		if (FILE_AUTHORS_HAS_NO_BOOK.exists()) {
-			if (FILE_AUTHORS_HAS_NO_BOOK.delete() == false) {
-				System.err.println(FILE_AUTHORS_HAS_NO_BOOK.getAbsolutePath() + " can not be deleted!");
-				System.exit(0);
-			} else {
-				System.out.println(FILE_AUTHORS_HAS_NO_BOOK.getAbsolutePath() + " is deleted!");
-			}
-		}
-
-		if (FILE_BOOK_HAS_INVALID_AUTHOR.exists()) {
-			if (FILE_BOOK_HAS_INVALID_AUTHOR.delete() == false) {
-				System.err.println(FILE_BOOK_HAS_INVALID_AUTHOR.getAbsolutePath() + " can not be deleted!");
-				System.exit(0);
-			} else {
-				System.out.println(FILE_BOOK_HAS_INVALID_AUTHOR.getAbsolutePath() + " is deleted!");
-			}
-		}
-
-		if (FILE_MANY_RECORDED_AUTHORS.exists()) {
-			if (FILE_MANY_RECORDED_AUTHORS.delete() == false) {
-				System.err.println(FILE_MANY_RECORDED_AUTHORS.getAbsolutePath() + " can not be deleted!");
-				System.exit(0);
-			} else {
-				System.out.println(FILE_MANY_RECORDED_AUTHORS.getAbsolutePath() + " is deleted!");
-			}
-		}
-
-		if (FILE_MANY_RECORDED_BOOKS.exists()) {
-			if (FILE_MANY_RECORDED_BOOKS.delete() == false) {
-				System.err.println(FILE_MANY_RECORDED_BOOKS.getAbsolutePath() + " can not be deleted!");
-				System.exit(0);
-			} else {
-				System.out.println(FILE_MANY_RECORDED_BOOKS.getAbsolutePath() + " is deleted!");
-			}
-		}
-
+		prepareOutputFolderStructure(FILE_VALIDATION_ERROR_AUTHOR);
+		prepareOutputFolderStructure(FILE_VALIDATION_ERROR_BOOK);
+		prepareOutputFolderStructure(FILE_AUTHORS_HAS_NO_BOOK);
+		prepareOutputFolderStructure(FILE_BOOK_HAS_INVALID_AUTHOR);
+		prepareOutputFolderStructure(FILE_MANY_RECORDED_AUTHORS);
+		prepareOutputFolderStructure(FILE_MANY_RECORDED_BOOKS);
 	}
 
 	/**
@@ -377,12 +338,7 @@ public class Parser {
 		Type collectionType = new TypeToken<List<Book>>() {
 		}.getType();
 
-		List<Book> bookList = gson.fromJson(json, collectionType);
-		// for (Book book : bookList) {
-		// System.out.println(book.toString());
-		// }
-
-		return bookList;
+		return  gson.fromJson(json, collectionType);
 	}
 
 	/**
@@ -402,12 +358,7 @@ public class Parser {
 		Type collectionType = new TypeToken<List<Author>>() {
 		}.getType();
 
-		List<Author> authorList = gson.fromJson(json, collectionType);
-		// for (Author author : authorList) {
-		// System.out.println(author.toString());
-		// }
-
-		return authorList;
+		return gson.fromJson(json, collectionType);
 	}
 
 	/**
@@ -482,28 +433,4 @@ public class Parser {
 		return sb.toString();
 	}
 
-	// protected String toString(List<Author> authorList) {
-	//
-	// final String delimiter = "|";
-	//
-	// if (authorList == null || authorList.size() == 0) {
-	// return "";
-	// }
-	//
-	// StringBuilder sb = new StringBuilder();
-	//
-	// sb.append(authorList.size());
-	// sb.append(delimiter);
-	//
-	// for (Author book : authorList) {
-	// if (book == null) {
-	// continue;
-	// }
-	//
-	// sb.append(delimiter);
-	// sb.append(book.toString());
-	// }
-	//
-	// return sb.toString();
-	// }
 }
