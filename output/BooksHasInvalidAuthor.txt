@@ -1,0 +1,10 @@
+1|Book: id=07540627-e14f-4b61-b19d-82074fea6ebd name=Panorpian Unmeekness author=a808dbcf-c511-499c-8b1c-f5bdb8f4a7a
+1|Book: id=7472d212-3216-4db4-b441-f680b15f5e5b name=Farthingale Penciller author=26157e69-b086-48f8-8723-dd7e6671b50
+1|Book: id=a3be3c61-13b2-4044-b2a6-b52881a7084b name=Casuarinaceae Sagination author=504bf607-f71c-460f-912e-5b9b6a382b4
+1|Book: id=e691dcce-3b48-4a2b-9291-1045ebdcec89 name=Arithmogram Saddlebow author=38b1ccf3-b575-44e2-b3b5-7959af38b05
+1|Book: id=eda2edd9-eec6-42db-bb7c-1ddffe63224d name=Stoled Scientician author=b2226270-9254-45a8-9c83-2ee81966c9b
+1|Book: id=ee86bdc3-5ae1-47ba-8191-e47790efb000 name=Gradable Holophrase author=05abdfaf-f203-424b-9aba-7cc5da24234
+1|Book: id=1703e127-28f0-4c0e-8fb8-d6d16a4e226e name=Whilkut Noncommittally author=f9308dd3-69cf-426a-b502-27d67d69c98
+1|Book: id=40e2fafa-2efa-4681-babf-ff89492e948d name=Sarcosepsis Reladen author=2a7286fb-e5af-4ae1-a9d7-32a0be26c00
+1|Book: id=3b2e7dfe-36a3-4e49-b30a-33612a802c56 name=Keratin Circumaxillary author=8cffdb25-97ed-4e9e-bb46-8391ab12195
+1|Book: id=ec11c503-353d-44cc-b262-6452b10da1f8 name=Quodlibet Eudora author=4b59696e-4e16-4413-bac2-8fd21c86ddd
